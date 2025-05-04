@@ -1,10 +1,7 @@
-# CMSC335FinalProject
-CMSC 335, Spring 2025 (FINAL PROJECT - Thushan Ranasinghe, Roshan Aterugu)
-Project: DreamifyTravels
-
-Tech Stack 
-1. MongoDB (BackEnd)
-2. Node/Express (BackEnd)
-3. HTML/CSS (FrontEnd)
-
-We will use external APIS:
+Submitted by: Thushan Ranasinghe (directory id: tranasi5)
+Group Members: Thushan Ranasinghe (tranasi5), Roshan Aterugu (TODO ADD)
+App Description: Allows users to enter travel information, look at travel destinations, and store the results
+YouTube Video Link: TODO
+APIs: TODO
+Contact Email: tranasi5@terpmail.umd.edu
+        
