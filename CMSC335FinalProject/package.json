@@ -1,0 +1,12 @@
+{
+  "name": "cmsc335finalproject",
+  "version": "1.0.0",
+  "description": "# TODO -> DOUBLE CHECK THTIHTITHITHITHITHITHIHIS IS THE RIGHT FORMAT",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
