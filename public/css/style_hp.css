@@ -1,0 +1,168 @@
+/* REQUIREMENTS FOR CSS:
+    Your application must define and use a CSS file that:
+    Relies on at least the background-color, color and font-size properties
+    Relies on at least a google font
+*/
+
+
+html {
+    font-size: 14px;
+}
+
+.photo_container {
+    border: 0.5rem double black;
+    width: 465px;
+    height: 290px;
+    margin: 0rem auto;
+}
+
+.center_txt {
+    text-align: center
+}
+
+
+/* .margin {
+    height: 100%;
+    width: auto;
+    text-align: center;
+}
+
+.bg_pic {
+    background-color: white;
+    background-image: url(fightbg.png);
+    background-size: 150% 150%;
+
+    background-repeat:repeat-y;
+    background-attachment:scroll;
+    background-position: center;
+
+
+    background-image: url(images/fightbg.png);
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    background-attachment: scroll;
+
+    height: 320px;
+
+    background-size: 150% 150%;
+    min-height: 100vh;
+    width: 520px;
+} */
+
+
+/* body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+} */
+  
+.margin {
+    height: 100%;
+    width: 100%;
+    /* text-align: center; */
+    position: relative; /* For text positioning */
+}
+
+/*.bg_pic {
+    background-image: url('flight.png');
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+}
+
+h1, p, h2 {
+    position: relative;
+    color: red;
+    text-shadow: 1px 1px 3px rgba(0,0,0,0.8);
+} */
+
+.flight_in_sky_att {
+    width: 70%;
+    height: auto;
+    border-radius: 10px;
+}
+
+.flight_in_beach_att {
+    border: 0.5rem double black;
+    width: 465px;
+    height: 290px;
+    margin: 0rem auto;
+}
+
+.flight_img {
+    background-color: white;
+    /* background-image: url(/images/flight_in_beach.png); */
+    background-image: url(/images/flight_with_people.png);
+    /* background-size: 465px 290px; */
+    
+    background-size: 600px 375px;
+    width: 600px;
+    height: 375px;
+    margin: 0 auto;
+    border-radius: 10px;
+    /* width: 465px; */
+    /* height: 290px; */
+    
+    background-repeat:no-repeat;
+    background-attachment:scroll;
+    background-position:center;
+}
+
+.form_color {
+    text-align: center;
+    color: white;
+    
+    background-color: rgba(173, 216, 255, 0.4);
+    width: 500px;
+    margin-left: auto;
+    margin-right: auto;
+
+    height: auto;
+    border: 1px solid aliceblue;
+
+    border-radius: 10px;
+    
+}
+
+.button_att {
+    border-radius: 10px;
+    background-color: white;
+    border: 1px solid aliceblue;
+    padding-top: 5px;
+    padding-bottom: 5px;
+    /* margin-left: 20px; */
+    width: 70px;
+
+}
+
+.button_att:hover {
+    background-color: lightblue;
+    transform: translateY(+1px);
+}
+
+.design {
+    text-align: center;
+    margin: 0rem auto;
+    border: 2px solid black;
+    border-radius: 10px;
+    /* width: 70%; */
+    width: 950px;
+    height: 100vh;
+    /* background-color:lavender; */
+    /* background-color:powderblue; */
+    background-color:rgba(190, 231, 255,0.95);
+}
+
+.bg_img {
+    background-image: url(/images/background.png);
+    background-repeat:repeat;
+    background-attachment:scroll;
+    background-position:center;
+}

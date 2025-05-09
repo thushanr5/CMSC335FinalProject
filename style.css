@@ -1,8 +1,109 @@
-/* REQUIREMENTS FOR CSS:
-    Your application must define and use a CSS file that:
-    Relies on at least the background-color, color and font-size properties
-    Relies on at least a google font
-*/
+/* You implement */
 
+html {
+    font-size: 14px;
+    font-family: Arial, sans-serif;
+}
 
+.title_att {
+    font-size: 41px;
+    color: azure;
+    background-color: rgba(0,0,0,.4);
+    /*highlights only the text and not the whole line*/
+    display: inline;
+}
 
+.container {
+    background-image: url(./images/JimHenson.jpg);
+    background-size: cover;
+    background-position: top left;
+
+    width: 606px;
+    height: 562px;
+    
+    margin: 0 auto;
+    padding: 10px;
+    border-color: green;
+    border-style: solid;
+    border-width: 5px;
+}
+
+a {
+    color: brown;
+    font-size: 19px;
+    font-style: italic;
+}
+
+a:visited {
+    color: beige;
+}
+
+a:hover {
+    font-size: 16px;
+}
+
+.no_italic {
+    font-style: normal;
+}
+
+footer {
+    background-color: red;
+
+    border: 5px groove silver; /* for inner border*/
+    outline: 4px solid rgb(158,211,225); /* for outer border*/
+    text-align: center;
+    width: 100.4%;
+    
+	font-size: 1.25em;
+	padding-top: .35em;
+    padding-bottom: .35em;
+    margin-left: -6px;
+    bottom: 0;
+
+    height: 22.5px;
+}
+
+.link_container {
+    height: 44px;
+    width: 220px;
+    text-align: center;
+    margin: 0 auto;
+    background-color: rgba(211,211,211, 0.8);
+}
+
+.form_page {
+    height: auto;
+    width: 355px;
+    background-color: rgba(255, 255, 255, 0.85);
+    border: 5px solid azure;
+    margin: 19px;
+    padding: 15px;
+}
+
+#alter_height {
+    height: 188px;
+}
+
+.email_att {
+    font-size: 10px;
+    width: 180px;
+}
+
+.input_card_size {
+    width: 40px;
+    text-align: center;
+}
+
+.border_col {
+    border: 2px solid red;
+}
+
+.button_att {
+    border: 3px double black;
+    background-color: rgb(255, 255, 255);
+    width: 80px;
+    height: 34px;
+    border-radius: 10px;
+    margin-right: 5px;
+    font-size: 9px;
+}
