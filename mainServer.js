@@ -50,6 +50,39 @@ app.get("/desiredFlights", (request, response)=>{
     response.render("desiredFlights");
 })
 
+
+app.post("/book_flight", async (request, response) => {
+    // const selectedFlight = document.querySelector('input[name="selectedFlight"]:checked');
+    try {
+        await client.connect();
+        const database = client.db(databaseName);
+        const collection = database.collection(collectionName);
+
+        const selectedFlight = request.body.selectedFlight;
+        
+        console.log("selectedFlight: ", selectedFlight);
+
+        // let filter = { name: selectedFlight.value };
+        // result = await collection.findOne(filter);
+
+        const filter = { uniqueNum: parseInt(selectedFlight) };
+        const result = await collection.findOne(filter);
+
+
+        const variables = {
+            flight: result,
+        };
+
+        response.render("book_flight.ejs", variables);
+
+    }
+    catch (error) {
+        console.error(error);
+    }
+});
+
+
+
 app.get("/travel_info", async (request, response) => {
 
     try {
@@ -88,7 +121,13 @@ app.post("/get_flights", async (request, response) => {
         const collection = database.collection(collectionName);
     
         /* Looking for several */
-        filter = { 'departure.iata': neededDeparture, 'arrival.iata': neededArrival};
+
+        if (!neededArrival){
+            filter = { 'departure.iata': neededDeparture};
+        }
+        else {
+            filter = { 'departure.iata': neededDeparture, 'arrival.iata': neededArrival};
+        } 
         const cursor = collection.find(filter);
         result = await cursor.toArray();
         console.log(result);
@@ -118,37 +157,37 @@ app.post("/get_flights", async (request, response) => {
 
 // DO WE NEED THE THING BELOW: ASK A TA ?
 
-// process.stdin.setEncoding("utf8");
-// process.stdin.on('readable', async () => {
-//     const dataInput = process.stdin.read();
-//     if (dataInput !== null) {
-//         const command = dataInput.trim();
-//         if (command === "stop") {
-//             // copied from lecture code
-//             try {
-//                 const database = client.db(databaseName);
-//                 const collection = database.collection(collectionName);
+process.stdin.setEncoding("utf8");
+process.stdin.on('readable', async () => {
+    const dataInput = process.stdin.read();
+    if (dataInput !== null) {
+        const command = dataInput.trim();
+        if (command === "stop") {
+            // copied from lecture code
+            try {
+                const database = client.db(databaseName);
+                const collection = database.collection(collectionName);
 
-//                 const filter = {}; // filter = {} deletes them all
-//                 const result = await collection.deleteMany(filter);
-//                 console.log(`Entries deleted ${result.deletedCount}`);
-//             }
-//             catch (error) {
-//                 console.error(error);
-//             }
-//             finally {
-//                await client.close();
-//             }
-//             process.stdout.write("Shutting down the server");
-//             server.close(() => process.exit(0));
-//         }
-//         else {
-//             process.stdout.write(`Invalid command: ${command}\n`);
-//             console.log("Stop to shutdown the server: ");
-//         }
-//         process.stdin.resume();
-//     }
-// });
+                const filter = {}; // filter = {} deletes them all
+                const result = await collection.deleteMany(filter);
+                console.log(`Entries deleted ${result.deletedCount}`);
+            }
+            catch (error) {
+                console.error(error);
+            }
+            finally {
+               await client.close();
+            }
+            process.stdout.write("Shutting down the server");
+            server.close(() => process.exit(0));
+        }
+        else {
+            process.stdout.write(`Invalid command: ${command}\n`);
+            console.log("Stop to shutdown the server: ");
+        }
+        process.stdin.resume();
+    }
+});
 
 const server = app.listen(portNumber, async () => {
     console.log(`Web server is running at http://localhost:${portNumber}`);
@@ -166,7 +205,10 @@ async function get_all_flights() {
 
         const api_res = await axios.get('https://api.aviationstack.com/v1/flights?', {params});
 
-        const all_scheduled_flights = api_res.data.data.map(flight => ({
+        // num to keep track of the contents
+        const all_scheduled_flights = api_res.data.data.map((flight, num) => ({
+
+            uniqueNum: num+1,
             airline: {
                 name: flight.airline.name ? flight.airline.name : "Not Listed",
                 iata: flight.airline.iata ? flight.airline.iata : "Not Listed",
@@ -193,7 +235,6 @@ async function get_all_flights() {
         }))  || [];
 
         // for mongodb
-        // const client = new MongoClient(connection_str);
         
         const database = client.db(databaseName);
         const collection = database.collection(collectionName);

@@ -16,52 +16,9 @@
                 <h1>Flights:</h1>
                 <div class="flight_img">
 
-                    <!-- <h1 class="">Flights:</h1> -->
-                    <!-- <img src="/images/flight_in_beach.png" alt="Image" id="displayedImage" class="flight_in_beach_att"> -->
-
                     <br><br><br><br><br><br><br><br>
                     <br><br><br><br><br><br><br><br>
 
-
-                    <!-- Not being used
-                    <form action="/get_flights" method="post">
-                        <fieldset class="form_color">
-                          <legend><strong>Departure Airport</strong></legend>
-                          <% departureChoices.forEach(option => { %>
-                            <div class="radio-option">
-                              <input 
-                                type="radio" 
-                                id="dep-<%= option %>" 
-                                name="selectedDep" 
-                                value="<%= option %>"
-                                <%= departureChoices[0] === option ? 'checked' : '' %>
-                              >
-                              <label for="dep-<%= option %>"><%= option %></label>
-                            </div>
-                          <% }); %>
-                        </fieldset>
-                      
-                        <fieldset class="form_color">
-                          <legend><strong>Arrival Airport</strong></legend>
-                          <% arrivalChoices.forEach(option => { %>
-                            <div class="radio-option">
-                              <input 
-                                type="radio" 
-                                id="arr-<%= option %>" 
-                                name="selectedArr" 
-                                value="<%= option %>"
-                                <%= arrivalChoices[0] === option ? 'checked' : '' %>
-                              >
-                              <label for="arr-<%= option %>"><%= option %></label>
-                            </div>
-                          <% }); %>
-                        </fieldset>
-                      
-                        <div class="center_txt">
-                          <input type="reset" value="Clear" class="button_att"/>
-                          <input type="submit" value="Submit" class="button_att"/>
-                        </div>
-                      </form> -->
 
                     <form action="/get_flights" method="post">
                         <fieldset class="form_color">
@@ -70,8 +27,9 @@
                             <span> -- </span>
                             <label><strong>Arrival: </strong><input type="text" name="arrival" required></label> -->
 
-                            <label for="depSelect"><strong>Departure IATA:</strong></label>
-                            <select id="depSelect" name="selectedDep">
+                            <label for="depSelect"><strong class="txt_size_smaller">Departure IATA:</strong></label>
+                            <select id="depSelect" name="selectedDep" required>
+                              <option value="" selected disabled> Select IATA </option>
                                 <% departureChoices.forEach(option => { %>
                                     <option value="<%= option %>"><%= option %></option>
                                 <% }); %>
@@ -79,8 +37,9 @@
 
                             <span>&emsp;&emsp;</span>
                             
-                            <label for="arrSelect"><strong>Arrival IATA:</strong></label>
+                            <label for="arrSelect"><strong class="txt_size_smaller">Arrival IATA:</strong></label>
                             <select id="arrSelect" name="selectedArr">
+                              <option value="" selected> Anywhere </option>
                                 <% arrivalChoices.forEach(option => { %>
                                     <option value="<%= option %>"><%= option %></option>
                                 <% }); %>
@@ -97,8 +56,6 @@
                     </form>
 
                 </div>
-
-                <!-- <p class=""> We are focused on providing you... </p> -->
 
                 <h2 class=""> <a href="/">Home</a></h2>
 

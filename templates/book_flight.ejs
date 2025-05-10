@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="/css/style_hp.css" type="text/css">
+    <title>Book_Flight</title>
+</head>
+<body>
+    <div class="bg_img">
+        <div class="design center_txt">
+            <h1>Book the Flight:</h1>
+
+
+            <h2>Flight Information:</h2>
+            <strong>Airline: </strong> <%= flight.airline.name %> (<%= flight.airline.iata %>)<br>
+            <strong>Fight Number: </strong> <%= flight.flight.number %> <br>
+            <hr>
+            <strong>Departure Airport: </strong> <%= flight.departure.airport %> (<%= flight.departure.iata%>) <strong> Time: </strong> <%= flight.departure.scheduled %> <strong> Timezone: </strong> <%= flight.departure.timezone %> <br>
+            <strong>Terminal: </strong> <%= flight.departure.terminal %> <strong> Gate: </strong> <%= flight.departure.gate %>
+            <hr>
+            <strong>Arrival Airport: </strong> <%= flight.arrival.airport %> (<%= flight.arrival.iata%>) <strong> Time: </strong> <%= flight.arrival.scheduled %> <strong> Timezone: </strong> <%= flight.arrival.timezone %> <br>
+            <strong>Terminal: </strong> <%= flight.arrival.terminal %> <strong> Gate: </strong> <%= flight.arrival.gate %>
+
+            <h2>Your Information: (todo)</h2>
+
+            <p>fst name (txt), lst name (txt), email (txt), gender (radio), birthday (mm,dd,yyyy)</p>
+            <hr>
+            <p>Dietary Preferances (radio- veg, non-veg, vegan), Seating Preferances (radio- eco, business, fst), Amount of tickets to book (number)</p>
+            <hr>
+            <p>Add this information to the MongoDB + popup prompt for confirmation</p>
+
+        </div>
+    </div>
+    
+</body>
+</html>

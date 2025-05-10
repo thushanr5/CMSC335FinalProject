@@ -166,3 +166,35 @@ h1, p, h2 {
     background-attachment:scroll;
     background-position:center;
 }
+
+.get_fight_option_con {
+    border: 1px solid aliceblue;
+    background-color: rgba(216, 233, 250, 1);
+    /* background-color:rgba(190, 231, 255,0.95); */
+    width: 800px;
+    /* margin-left: auto; */
+    /* margin-right: auto; */
+    margin: 0rem auto;
+    border-radius: 10px;
+
+    display: flex;          /* Enables flexbox */
+    gap: 20px;
+    /* text-align: center; */
+}
+
+.get_fight_snd {
+    flex: 1;
+    /* border-left: 1px solid aliceblue; */
+    text-align: center;
+    /* margin: 0 auto; */
+    /* background-color: rgba(216, 233, 250, 1); */
+    /* width: auto; */
+
+    /* margin-left: 300px; */
+}
+.txt_size{
+    font-size: 20px;
+}
+.txt_size_smaller {
+    font-size: 16px;
+}
