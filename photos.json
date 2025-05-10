@@ -1,0 +1,17 @@
+{
+    "destinations":
+    [
+        {"location": "London, England", "image": "https://upload.wikimedia.org/wikipedia/commons/e/e9/Super_moon_over_City_of_London_from_Tate_Modern_2018-01-31_4.jpg"},
+        {"location": "Paris, France" , "image" : "https://upload.wikimedia.org/wikipedia/commons/6/6e/Paris_-_Eiffelturm_und_Marsfeld2.jpg"},
+        {"location" : "Dublin, Ireland" , "image": "https://upload.wikimedia.org/wikipedia/commons/2/23/Government_Buildings%2C_Dublin%2C_Ireland.jpg"},
+        {"location" : "Tokyo, Japan", "image" : "https://upload.wikimedia.org/wikipedia/commons/c/c5/Tokyo_Shibuya_Scramble_Crossing_2018-10-09.jpg"},
+        {"location" : "Geneva, Switzerland", "image" : "https://upload.wikimedia.org/wikipedia/commons/1/17/Lake_Geneva_from_Chillon_Castle.jpg"},
+        {"location" : "Honolulu, Hawaii", "image" : "https://upload.wikimedia.org/wikipedia/commons/a/a1/Hawaii_beach%2C_Sihanoukville.jpg"},
+        {"location" : "Madrid, Spain", "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/a/a1/Madrid_-_Edificio_Grassy_%28Gran_V%C3%ADa_1%29_-_north_facade_-_relief_over_entrance.jpg/640px-Madrid_-_Edificio_Grassy_%28Gran_V%C3%ADa_1%29_-_north_facade_-_relief_over_entrance.jpg"},
+        {"location" : "Berlin, Germany", "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/9/96/Franz%C3%B6sischer_Dom%2C_Gendarmenmarkt%2C_Berlin_%28Blaue_Stunde%29.jpg/640px-Franz%C3%B6sischer_Dom%2C_Gendarmenmarkt%2C_Berlin_%28Blaue_Stunde%29.jpg"},
+        {"location" : "New York City, United States", "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/f/fd/National_Park_Service_9-11_Statue_of_Liberty_and_WTC_fire.jpg/640px-National_Park_Service_9-11_Statue_of_Liberty_and_WTC_fire.jpg"},
+        {"location" : "Los Angeles, United States", "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/6/69/Los_Angeles_with_Mount_Baldy.jpg/640px-Los_Angeles_with_Mount_Baldy.jpg"},
+        {"location" : "San Antonio, United States", "image": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/e1/Book_Building_San_Antonio.jpg/640px-Book_Building_San_Antonio.jpg"},
+        {"location" : "Washington D.C., United States", "image" : "https://upload.wikimedia.org/wikipedia/commons/thumb/c/c7/July_4th_fireworks%2C_Washington%2C_D.C._%28LOC%29.jpg/640px-July_4th_fireworks%2C_Washington%2C_D.C._%28LOC%29.jpg"}
+    ]
+}
