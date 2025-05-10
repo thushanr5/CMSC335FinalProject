@@ -34,7 +34,7 @@ const client = new MongoClient(connection_str);
 // await client.connect(); // give me a problem
 
 app.get("/", (request, response) => {
-    response.render("homePage.ejs", null);
+    response.render("homePage.ejs");
 });
 
 // popularDestinations route
