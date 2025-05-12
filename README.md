@@ -6,7 +6,7 @@
 Thushan Ranasinghe (directory id: tranasi5)
 
 ## Group Members:
-Thushan Ranasinghe (tranasi5), Roshan Aterugu (TODO ADD)
+Thushan Ranasinghe (tranasi5), Roshan Aterugu (roshana)
 
 ## App Description:
 Allows users to enter travel information, look at travel destinations, and store the results
@@ -15,7 +15,8 @@ Allows users to enter travel information, look at travel destinations, and store
 TODO
 
 ## APIs:
-TODO
+aviationstack
+https://aviationstack.com
 
 ## Contact Email:
 tranasi5@terpmail.umd.edu

@@ -20,18 +20,18 @@
 
                             <div class="get_fight_option_con">
 
-                            <input type="radio" id="flight" name="selectedFlight" value=<%= flight.uniqueNum %>>
-                            <label for="flight">
+                                <input type="radio" id="flight" name="selectedFlight" value=<%= flight.uniqueNum %>>
+                                <label for="flight">
 
-                                <div class="get_fight_snd">
-                                    <strong class="txt_size"><%= flight.airline.name %> - (<%= flight.airline.iata %>)</strong>
-                                </div>
-                                <div class="get_fight_snd">
-                                    <strong class="txt_size_smaller">Departure Airport:</strong> <%= flight.departure.airport %> | <strong class="txt_size_smaller">Departure Time:</strong> <%= flight.departure.scheduled %> <br>
-                                    <strong class="txt_size_smaller">Arrival Airport:</strong> <%= flight.arrival.airport %> | <strong class="txt_size_smaller">Arrival Time:</strong> <%= flight.arrival.scheduled %> <br>
-                                    <strong class="txt_size_smaller">Flight Number:</strong> <%= flight.flight.number %>
-                                </div>
-                            </label>
+                                    <div class="get_fight_snd">
+                                        <strong class="txt_size"><%= flight.airline.name %> - (<%= flight.airline.iata %>)</strong>
+                                    </div>
+                                    <div class="get_fight_snd">
+                                        <strong class="txt_size_smaller">Departure Airport:</strong> <%= flight.departure.airport %> | <strong class="txt_size_smaller">Departure Time:</strong> <%= flight.departure.scheduled %> <br>
+                                        <strong class="txt_size_smaller">Arrival Airport:</strong> <%= flight.arrival.airport %> | <strong class="txt_size_smaller">Arrival Time:</strong> <%= flight.arrival.scheduled %> <br>
+                                        <strong class="txt_size_smaller">Flight Number:</strong> <%= flight.flight.number %>
+                                    </div>
+                                </label>
 
                             </div>
 
