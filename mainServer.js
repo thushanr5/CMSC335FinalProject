@@ -28,6 +28,7 @@ app.listen(portNumber);
 const connection_str = process.env.MONGO_CONNECTION_STRING;
 const databaseName = process.env.MONGO_DB_NAME;
 const collectionName = process.env.MONGO_COLLECTION;
+const customersCollectName = process.env.MONGO_CUSTOMERS_DATA_COLLECTION;
 const apiKey = process.env.FLIGHT_API_KEY;
 
 const client = new MongoClient(connection_str);
@@ -152,6 +153,68 @@ app.post("/get_flights", async (request, response) => {
         console.error("Flight API error:", error);
     }
 
+});
+
+
+app.post("/confirmation_page", async (request, response) => {
+
+    try {
+        const database = client.db(databaseName);
+        const collection = database.collection(customersCollectName);
+
+        const purchase = {
+            flight: {
+                airline: request.body.airlineName,
+                number: request.body.flightNum,
+                departure: {
+                    airport: request.body.depAir,
+                    time: request.body.depTime,
+                    timezone: request.body.depTimeZone,
+                    terminal: request.body.depTerminal,
+                    gate: request.body.depGate
+                },
+                arrival: {
+                    airport: request.body.airAir,
+                    time: request.body.airTime,
+                    timezone: request.body.airTimeZone,
+                    terminal: request.body.airTerminal,
+                    gate: request.body.airGate
+                }
+            },
+            
+            passenger: {
+                firstName: request.body.firstName,
+                lastName: request.body.lastName,
+                email: request.body.email,
+                gender: request.body.gender,
+                birthday: request.body.birthday
+            },
+            
+            preferences: {
+                diet: request.body.diet,
+                seating: request.body.seating,
+                ticketCount: parseInt(request.body.tickets)
+            },
+            
+            bookingDate: new Date(),
+        };
+
+
+
+        const result = await collection.insertOne(purchase);
+
+        response.render("confirmation_page.ejs", {
+            firstName: request.body.firstName,
+            lastName: request.body.lastName,
+            email: request.body.email,
+            depAirport: request.body.depAir,
+            airAirport: request.body.airAir,
+            ticketCount: parseInt(request.body.tickets),
+        });
+    }
+    catch (error) {
+        console.error("Storing in DB error:", error);
+    }
 });
 
 

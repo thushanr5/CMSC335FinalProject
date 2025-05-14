@@ -8,27 +8,147 @@
 </head>
 <body>
     <div class="bg_img">
-        <div class="design center_txt">
+        <div class="design">
             <h1>Book the Flight:</h1>
 
 
-            <h2>Flight Information:</h2>
-            <strong>Airline: </strong> <%= flight.airline.name %> (<%= flight.airline.iata %>)<br>
-            <strong>Fight Number: </strong> <%= flight.flight.number %> <br>
-            <hr>
-            <strong>Departure Airport: </strong> <%= flight.departure.airport %> (<%= flight.departure.iata%>) <strong> Time: </strong> <%= flight.departure.scheduled %> <strong> Timezone: </strong> <%= flight.departure.timezone %> <br>
-            <strong>Terminal: </strong> <%= flight.departure.terminal %> <strong> Gate: </strong> <%= flight.departure.gate %>
-            <hr>
-            <strong>Arrival Airport: </strong> <%= flight.arrival.airport %> (<%= flight.arrival.iata%>) <strong> Time: </strong> <%= flight.arrival.scheduled %> <strong> Timezone: </strong> <%= flight.arrival.timezone %> <br>
-            <strong>Terminal: </strong> <%= flight.arrival.terminal %> <strong> Gate: </strong> <%= flight.arrival.gate %>
+            <div class="ticket">
+                <form action="/confirmation_page" method="post" onsubmit="return confirmation();">
 
-            <h2>Your Information: (todo)</h2>
+                <h3>Flight Information:</h3>
 
-            <p>fst name (txt), lst name (txt), email (txt), gender (radio), birthday (mm,dd,yyyy)</p>
-            <hr>
-            <p>Dietary Preferances (radio- veg, non-veg, vegan), Seating Preferances (radio- eco, business, fst), Amount of tickets to book (number)</p>
-            <hr>
-            <p>Add this information to the MongoDB + popup prompt for confirmation</p>
+                <fieldset>
+
+                    <label for="airlineName"><strong>Airline Name:</strong></label>
+                    <input type="text" id="airlineName" name="airlineName" value="<%= flight.airline.name %> (<%= flight.airline.iata %>)" readonly>
+                    <br>
+                    <br>
+                    <label for="flightNum"><strong>Fight Number:</strong></label>
+                    <input type="text" id="flightNum" name="flightNum" value="<%= flight.flight.number %>" readonly>
+
+                    <hr>
+
+                    <label for="depAir"><strong>Departure Airport:</strong></label>
+                    <input type="text" id="depAir" name="depAir" value="<%= flight.departure.airport %> (<%= flight.departure.iata%>)" readonly>
+                    <label for="depTime"><strong>Time:</strong></label>
+                    <input type="text" id="depTime" name="depTime" value="<%= flight.departure.scheduled %>" readonly>
+                    <label for="depTimeZone"><strong>Timezone:</strong></label>
+                    <input type="text" id="depTimeZone" name="depTimeZone" value="<%= flight.departure.timezone %>" readonly>
+
+                    <br><br>
+
+                    <label for="depTerminal"><strong>Terminal:</strong></label>
+                    <input type="text" id="depTerminal" name="depTerminal" value="<%= flight.departure.terminal %>" readonly>
+                    <label for="depGate"><strong>Gate Number:</strong></label>
+                    <input type="text" id="depGate" name="depGate" value="<%= flight.departure.gate %>" readonly>
+
+                    <br><br>
+
+                    <label for="airAir"><strong>Arrival Airport:</strong></label>
+                    <input type="text" id="airAir" name="airAir" value="<%= flight.arrival.airport %> (<%= flight.arrival.iata%>)" readonly>
+                    <label for="airTime"><strong>Time:</strong></label>
+                    <input type="text" id="airTime" name="airTime" value="<%= flight.arrival.scheduled %>" readonly>
+                    <label for="airTimeZone"><strong>Timezone:</strong></label>
+                    <input type="text" id="airTimeZone" name="airTimeZone" value="<%= flight.arrival.timezone %>" readonly>
+
+                    <br><br>
+
+                    <label for="airTerminal"><strong>Terminal:</strong></label>
+                    <input type="text" id="airTerminal" name="airTerminal" value="<%= flight.arrival.terminal %>" readonly>
+                    <label for="airGate"><strong>Gate Number:</strong></label>
+                    <input type="text" id="airGate" name="airGate" value="<%= flight.arrival.gate %>" readonly>
+                    
+                </fieldset>
+
+
+                <h3>Your Information: </h3>
+
+                <!-- <form action="/appdata_page" method="post" onsubmit="return confirmation();"> -->
+                    <!-- Personal Information Section -->
+                    <fieldset>
+                        <legend><strong>Personal Details</strong></legend>
+
+                        <label for="firstName">First Name:</label>
+                        <input type="text" id="firstName" name="firstName" required>
+                        
+                        <label for="lastName">Last Name:</label>
+                        <input type="text" id="lastName" name="lastName" required>
+                        
+                        <label for="email">Email:</label>
+                        <input type="email" id="email" name="email" required>
+
+                        <br><br>
+
+                        <label>Gender:</label>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Male</label>
+                        
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Female</label>
+                        
+                        <input type="radio" id="other" name="gender" value="other">
+                        <label for="other">Other</label>
+
+                        <br><br>
+
+                        <label for="birthday">Birthday:</label>
+                        <input type="date" id="birthday" name="birthday" required>
+
+                    </fieldset>
+                    
+                    
+                    <!-- Preferences Section -->
+                    <fieldset>
+                        <legend><strong>Preferences</strong></legend>
+                        
+                        <label>Dietary Preferences:</label>
+                        <input type="radio" id="veg" name="diet" value="vegetarian">
+                        <label for="veg">Vegetarian</label>
+                        
+                        <input type="radio" id="nonVeg" name="diet" value="non-vegetarian">
+                        <label for="nonVeg">Non-Vegetarian</label>
+                        
+                        <input type="radio" id="vegan" name="diet" value="vegan">
+                        <label for="vegan">Vegan</label>
+                        
+                        <br><br>
+                        
+                        <label>Seating Preferences:</label>
+                        <input type="radio" id="economy" name="seating" value="economy">
+                        <label for="economy">Economy</label>
+                        
+                        <input type="radio" id="business" name="seating" value="business">
+                        <label for="business">Business</label>
+                        
+                        <input type="radio" id="first" name="seating" value="first">
+                        <label for="first">First Class</label>
+                        
+                        <br><br>
+                        
+                        <label for="tickets">Number of Tickets:</label>
+                        <input type="number" id="tickets" name="tickets" min="1" max="5" value="1" required>
+                        
+                    </fieldset>
+
+                    <br>
+                    
+                    <div class="center_txt">
+                        <input type="reset" value="Clear" class="button_att"/>
+                        <span>&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;&emsp;</span>
+                        <input type="submit" value="Submit" class="button_att"/>
+                    </div>
+
+                    <br>
+
+                </form>
+
+            </div>
+
+            <script>
+                function confirmation() {
+                    return confirm("Are you sure you want to submit this application? Check to make sure the information is correct.");
+                }
+            </script>
 
         </div>
     </div>

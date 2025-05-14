@@ -4,6 +4,7 @@
     Relies on at least a google font
 */
 
+@import url('https://fonts.googleapis.com/css2?family=Dancing+Script:wght@400..700&display=swap');
 
 html {
     font-size: 14px;
@@ -61,7 +62,7 @@ html {
     height: 100%;
     width: 100%;
     /* text-align: center; */
-    position: relative; /* For text positioning */
+    position: relative;
 }
 
 /*.bg_pic {
@@ -134,7 +135,7 @@ h1, p, h2 {
 .button_att {
     border-radius: 10px;
     background-color: white;
-    border: 1px solid aliceblue;
+    border: 1px solid rgb(104, 135, 146);
     padding-top: 5px;
     padding-bottom: 5px;
     /* margin-left: 20px; */
@@ -148,7 +149,7 @@ h1, p, h2 {
 }
 
 .design {
-    text-align: center;
+    /* text-align: center; */
     margin: 0rem auto;
     border: 2px solid black;
     border-radius: 10px;
@@ -177,7 +178,7 @@ h1, p, h2 {
     margin: 0rem auto;
     border-radius: 10px;
 
-    display: flex;          /* Enables flexbox */
+    display: flex;
     gap: 20px;
     /* text-align: center; */
 }
@@ -201,6 +202,47 @@ h1, p, h2 {
     font-size: 16px;
 }
 
+.ticket {
+    width: 850px;
+    height: auto;
+    margin: 0rem auto;
+    background-color: white;
+    border: 1px solid rgb(104, 135, 146);
+    border-radius: 10px;
+    padding: 10px;
+
+}
+
 .changeColor {
-    
+    color:mediumvioletred;
+}
+
+h2:hover {
+    color: red;
+}
+
+a:hover {
+    color: brown;
+}
+
+.get_fight_option_con:hover {
+    color:mediumvioletred;
+}
+
+/* #add_padding {
+    padding-left: 10px;
+} */
+
+
+h1 {
+    font-family: 'Dancing Script';
+    color:rgb(176, 123, 53);
+    text-align: center;
+}
+
+fieldset {
+    border-radius: 10px;
+    margin: 0rem auto;
+    width: 750px;
+    padding: 10px;
 }
