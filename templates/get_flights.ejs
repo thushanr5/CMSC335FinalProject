@@ -14,14 +14,14 @@
             <% if (matching_flights.length > 0) { %>
 
 
-                <form action="/book_flight" method="post">
+                <form action="/book_flight" method="post" onsubmit="return isChozen()">
                     <fieldset>
                         <% matching_flights.forEach(flight => { %>
 
                             <div class="get_fight_option_con">
 
-                                <input type="radio" id="flight" name="selectedFlight" value=<%= flight.uniqueNum %>>
-                                <label for="flight">
+                                <input type="radio" id="<%= flight.uniqueNum %>" name="selectedFlight" value=<%= flight.uniqueNum %>>
+                                <label for="<%= flight.uniqueNum %>">
 
                                     <div class="get_fight_snd">
                                         <strong class="txt_size"><%= flight.airline.name %> - (<%= flight.airline.iata %>)</strong>
@@ -58,6 +58,23 @@
                     <h2><a href="/travel_info">Try another search</a></h2>
                 </div>
             <% } %>
+
+            <script>
+
+                function isChozen() {
+                    const selectedFlight = document.querySelector('input[name="selectedFlight"]:checked');
+                    if (!selectedFlight) {
+                        alert("Please select a flight before submitting.");
+                        return false;  // Prevent form submission
+                    }
+                    else {
+                        return true;
+                    }
+                    // return confirm("Are you sure you want to submit this application? Check to make sure the information is correct.");
+                }
+
+            </script>
+
         </div>
     </div>
 </body>
