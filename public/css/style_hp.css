@@ -155,7 +155,7 @@ h1, p, h2 {
     border-radius: 10px;
     /* width: 70%; */
     width: 950px;
-    height: 100vh;
+    height: 100dvh;
     /* background-color:lavender; */
     /* background-color:powderblue; */
     background-color:rgba(190, 231, 255,0.95);

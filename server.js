@@ -40,6 +40,7 @@ const client = new MongoClient(connection_str);
 app.post("/book_flight", async (request, response) => {
     // const selectedFlight = document.querySelector('input[name="selectedFlight"]:checked');
     try {
+        
         await client.connect();
         const database = client.db(databaseName);
         const collection = database.collection(collectionName);
@@ -72,7 +73,7 @@ app.post("/book_flight", async (request, response) => {
 app.get("/travel_info", async (request, response) => {
 
     try {
-            
+    
         const database = client.db(databaseName);
         const collection = database.collection(collectionName);
 
@@ -146,20 +147,20 @@ process.stdin.on('readable', async () => {
     if (dataInput !== null) {
         const command = dataInput.trim();
         if (command === "stop") {
-            try {
-                const database = client.db(databaseName);
-                const collection = database.collection(collectionName);
+            // try {
+            //     const database = client.db(databaseName);
+            //     const collection = database.collection(collectionName);
 
-                const filter = {};
-                const result = await collection.deleteMany(filter);
-                console.log(`Entries deleted ${result.deletedCount}`);
-            }
-            catch (error) {
-                console.error(error);
-            }
-            finally {
-               await client.close();
-            }
+            //     const filter = {};
+            //     const result = await collection.deleteMany(filter);
+            //     console.log(`Entries deleted ${result.deletedCount}`);
+            // }
+            // catch (error) {
+            //     console.error(error);
+            // }
+            // finally {
+            //    await client.close();
+            // }
             process.stdout.write("Shutting down the server");
             server.close(() => process.exit(0));
         }
@@ -173,76 +174,76 @@ process.stdin.on('readable', async () => {
 
 const server = app.listen(portNumber, async () => {
     console.log(`Web server is running at http://localhost:${portNumber}`);
-    await get_all_flights();
+    // await get_all_flights();
     console.log("Stop to shutdown the server: ");
 });
 
 
 
-async function get_all_flights() {
-    try {
-        await client.connect();
-        const params = new URLSearchParams({
-            access_key: apiKey,
-            flight_status: 'scheduled',
-        });
+// async function get_all_flights() {
+//     try {
+//         await client.connect();
+//         const params = new URLSearchParams({
+//             access_key: apiKey,
+//             flight_status: 'scheduled',
+//         });
 
-        const api_res = await axios.get('https://api.aviationstack.com/v1/flights?', {params});
+//         const api_res = await axios.get('https://api.aviationstack.com/v1/flights?', {params});
 
-        // num to keep track of the contents
-        const all_scheduled_flights = api_res.data.data.map((flight, num) => ({
+//         // num to keep track of the contents
+//         const all_scheduled_flights = api_res.data.data.map((flight, num) => ({
 
-            uniqueNum: num+1,
-            airline: {
-                name: flight.airline.name ? flight.airline.name : "Not Listed",
-                iata: flight.airline.iata ? flight.airline.iata : "Not Listed",
-            },
-            flight: {
-                number: flight.flight.number ? flight.flight.number : "Not Listed",
-            },
-            departure: {
-                airport: flight.departure.airport ? flight.departure.airport : "Not Listed",
-                timezone: flight.departure.timezone ? flight.departure.timezone : "Not Listed",
-                iata: flight.departure.iata ? flight.departure.iata : "Not Listed",
-                scheduled: flight.departure.scheduled ? flight.departure.scheduled : "Not Listed",
-                terminal: flight.departure.terminal ? flight.departure.terminal : "Not Listed",
-                gate: flight.departure.gate ? flight.departure.gate : "Not Listed",
-            },
-            arrival: {
-                airport: flight.arrival.airport ? flight.arrival.airport : "Not Listed",
-                timezone: flight.arrival.timezone ? flight.arrival.timezone : "Not Listed",
-                iata: flight.arrival.iata ? flight.arrival.iata : "Not Listed",
-                scheduled: flight.arrival.scheduled ? flight.arrival.scheduled : "Not Listed",
-                terminal: flight.arrival.terminal ? flight.arrival.terminal : "Not Listed",
-                gate: flight.arrival.gate ? flight.arrival.gate : "Not Listed",
-            },
-        }))  || [];
+//             uniqueNum: num+1,
+//             airline: {
+//                 name: flight.airline.name ? flight.airline.name : "Not Listed",
+//                 iata: flight.airline.iata ? flight.airline.iata : "Not Listed",
+//             },
+//             flight: {
+//                 number: flight.flight.number ? flight.flight.number : "Not Listed",
+//             },
+//             departure: {
+//                 airport: flight.departure.airport ? flight.departure.airport : "Not Listed",
+//                 timezone: flight.departure.timezone ? flight.departure.timezone : "Not Listed",
+//                 iata: flight.departure.iata ? flight.departure.iata : "Not Listed",
+//                 scheduled: flight.departure.scheduled ? flight.departure.scheduled : "Not Listed",
+//                 terminal: flight.departure.terminal ? flight.departure.terminal : "Not Listed",
+//                 gate: flight.departure.gate ? flight.departure.gate : "Not Listed",
+//             },
+//             arrival: {
+//                 airport: flight.arrival.airport ? flight.arrival.airport : "Not Listed",
+//                 timezone: flight.arrival.timezone ? flight.arrival.timezone : "Not Listed",
+//                 iata: flight.arrival.iata ? flight.arrival.iata : "Not Listed",
+//                 scheduled: flight.arrival.scheduled ? flight.arrival.scheduled : "Not Listed",
+//                 terminal: flight.arrival.terminal ? flight.arrival.terminal : "Not Listed",
+//                 gate: flight.arrival.gate ? flight.arrival.gate : "Not Listed",
+//             },
+//         }))  || [];
 
-        // for mongodb
+//         // for mongodb
         
-        const database = client.db(databaseName);
-        const collection = database.collection(collectionName);
+//         const database = client.db(databaseName);
+//         const collection = database.collection(collectionName);
 
-        const insertResult = await collection.insertMany(all_scheduled_flights);
+//         const insertResult = await collection.insertMany(all_scheduled_flights);
   
-        // fin mongobd code
+//         // fin mongobd code
 
 
-        console.log("Accessing API with the URL:", `https://api.aviationstack.com/v1/flights?${params}`);
+//         console.log("Accessing API with the URL:", `https://api.aviationstack.com/v1/flights?${params}`);
 
-        all_scheduled_flights.forEach(flight => {
-            console.log('Departure IATA', flight.departure.iata);
-            console.log('Arrival IATA', flight.arrival.iata);
-            console.log(' ');
-        });
+//         all_scheduled_flights.forEach(flight => {
+//             console.log('Departure IATA', flight.departure.iata);
+//             console.log('Arrival IATA', flight.arrival.iata);
+//             console.log(' ');
+//         });
 
-        console.log("All Flights Found: ", all_scheduled_flights.length);
+//         console.log("All Flights Found: ", all_scheduled_flights.length);
 
-    }
-    catch(error) {
-        return [];
-    }
-}
+//     }
+//     catch(error) {
+//         return [];
+//     }
+// }
 
 app.post("/confirmation_page", async (request, response) => {
 
@@ -299,8 +300,25 @@ app.post("/confirmation_page", async (request, response) => {
             airAirport: request.body.airAir,
             ticketCount: parseInt(request.body.tickets),
         });
+
+        deleteFlightDB();
+
     }
     catch (error) {
         console.error("Storing in DB error:", error);
     }
 });
+
+async function deleteFlightDB() {
+    try {
+        const database = client.db(databaseName);
+        const collection = database.collection(collectionName);
+
+        const filter = {};
+        const result = await collection.deleteMany(filter);
+        console.log(`Entries deleted ${result.deletedCount}`);
+    }
+    catch (error) {
+        console.error(error);
+    }
+}
