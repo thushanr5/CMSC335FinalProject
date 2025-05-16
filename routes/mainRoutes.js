@@ -30,6 +30,9 @@ require("dotenv").config({
 router.get("/", async (request, response)=>{
 
     try {
+
+        response.render("homePage.ejs");
+        
         await client.connect();
         const database = client.db(databaseName);
         const collection = database.collection(collectionName);
@@ -40,7 +43,6 @@ router.get("/", async (request, response)=>{
             await get_all_flights();
         }
 
-        response.render("homePage.ejs");
     }
     catch (error) {
         console.error(error);
